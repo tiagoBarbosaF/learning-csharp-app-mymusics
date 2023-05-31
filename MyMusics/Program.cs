@@ -1,13 +1,19 @@
 ﻿const string welcomeMessage = "Welcome to My Playlist!";
 var exit = true;
 var chosenOption = "";
-var bandsList = new List<string>
+
+var registerBands = new Dictionary<string, List<int>>
 {
-  "Millet",
-  "Beatles",
-  "Neo Japonism",
-  "Doul"
+  {"Millet", new List<int> {10, 9, 10, 7}},
+  {"Beatles", new List<int> {5, 8, 10}},
+  {"Neo Japonism", new List<int> {10, 7}},
+  {"Doul", new List<int> {10, 9, 6, 7, 8}},
 };
+
+foreach (var test in registerBands.Values)
+{
+  Console.WriteLine(test);
+}
 
 void ShowWelcomeMessage()
 {
@@ -42,10 +48,10 @@ void OptionsMenu(string chosenOption)
       ListBands();
       break;
     case "3":
-      Console.WriteLine("Option 3");
+      AvailableBand();
       break;
     case "4":
-      Console.WriteLine("Option 4");
+      AverageBandRate();
       break;
     case "0":
       exit = false;
@@ -72,7 +78,7 @@ void RegisterBand()
 
   Console.WriteLine($"\nThe band {bandName} it's register successfully!");
 
-  bandsList.Add(bandName);
+  registerBands.Add(bandName, new List<int>());
 
   Console.ReadKey();
 }
@@ -88,12 +94,69 @@ void ListBands()
 
   Console.WriteLine();
 
-  foreach (var band in bandsList!)
+  foreach (var band in registerBands!)
   {
-    Console.WriteLine($"\t- {band}");
+    Console.WriteLine($"- {band.Key}");
+    Console.WriteLine($"  Rate: {string.Join(", ", band.Value)}\n");
   }
 
   Console.ReadKey();
+}
+
+void AvailableBand()
+{
+  Console.Clear();
+
+  Console.WriteLine(@"
+▄▀█ █░█ ▄▀█ █ █░░ ▄▀█ █▄▄ █░░ █▀▀   █▄▄ ▄▀█ █▄░█ █▀▄
+█▀█ ▀▄▀ █▀█ █ █▄▄ █▀█ █▄█ █▄▄ ██▄   █▄█ █▀█ █░▀█ █▄▀
+");
+
+  Console.Write("Which band do you like to available: ");
+
+  var bandName = Console.ReadLine()!;
+
+  if (registerBands!.ContainsKey(bandName))
+  {
+    Console.Write($"Which rate for this band: ");
+
+    var rate = int.Parse(Console.ReadLine()!);
+
+    registerBands[bandName].Add(rate);
+
+    Console.WriteLine($"\nThe rate {rate} it's registered with successfully.");
+
+    Console.ReadKey();
+  }
+  else
+  {
+    Console.WriteLine($"Band {bandName} isn't registered.");
+  }
+}
+
+void AverageBandRate()
+{
+  Console.Clear();
+  
+  Console.WriteLine(@"
+▄▀█ █░█ █▀▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀█ █▀▀   ▀█▀ █░█ █▀▀   █▄▄ ▄▀█ █▄░█ █▀▄ ▀ █▀   █▀█ ▄▀█ ▀█▀ █ █▄░█ █▀▀ █▀
+█▀█ ▀▄▀ ██▄ █▀▄ █▀█ █▄█ ██▄   █▄█ █▀░   ░█░ █▀█ ██▄   █▄█ █▀█ █░▀█ █▄▀ ░ ▄█   █▀▄ █▀█ ░█░ █ █░▀█ █▄█ ▄█
+");
+  
+  Console.Write("Which band do you like to see: ");
+
+  var bandName = Console.ReadLine()!;
+  
+  if (registerBands!.ContainsKey(bandName))
+  {
+    Console.Write($"Average band's rating: {registerBands[bandName].Average()}\n");
+
+    Console.ReadKey();
+  }
+  else
+  {
+    Console.WriteLine($"Band {bandName} isn't registered.");
+  }
 }
 
 while (exit)
