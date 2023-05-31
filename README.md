@@ -1,6 +1,6 @@
 # App My Musics
 
-> Development
+> Finished
 
 Creating an app using concepts of CSharp
 

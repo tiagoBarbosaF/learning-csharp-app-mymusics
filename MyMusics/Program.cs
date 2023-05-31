@@ -131,6 +131,8 @@ void AvailableBand()
   else
   {
     Console.WriteLine($"Band {bandName} isn't registered.");
+    
+    Console.ReadKey();
   }
 }
 
@@ -156,6 +158,8 @@ void AverageBandRate()
   else
   {
     Console.WriteLine($"Band {bandName} isn't registered.");
+    
+    Console.ReadKey();
   }
 }
 
