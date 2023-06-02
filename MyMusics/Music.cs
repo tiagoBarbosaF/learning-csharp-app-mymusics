@@ -2,11 +2,14 @@
 
 public class Music
 {
-    public string Name { get; set; }
-    public string Artist { get; set; }
-    public int Duration { get; set; }
-    public bool Available { get; set; }
+    private string Name { get; }
+    private string Artist { get; }
+    private int Duration { get; }
+    private bool Available { get; }
 
+    private string ShortDescription => $"The Music {Name} is from artist {Artist}";
+
+    
     public Music(string name, string artist, int duration, bool available)
     {
         Name = name;
@@ -23,6 +26,7 @@ public class Music
                $"Name: {Name}\n" +
                $"Artist: {Artist}\n" +
                $"Duration: {Duration}\n" +
-               $"Available: {textAvailable}";
+               $"Available: {textAvailable}\n" +
+               $"Short Description: {ShortDescription}";
     }
 }
