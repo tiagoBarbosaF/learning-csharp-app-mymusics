@@ -1,10 +1,10 @@
-﻿namespace MyMusics;
+﻿namespace MyMusics.Classes;
 
 public class Music
 {
-    private string Name { get; }
+    public string Name { get; }
     private string Artist { get; }
-    private int Duration { get; }
+    public int Duration { get; }
     private bool Available { get; }
 
     private string ShortDescription => $"The Music {Name} is from artist {Artist}";

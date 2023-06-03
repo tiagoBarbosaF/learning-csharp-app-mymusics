@@ -178,10 +178,15 @@
 //
 // #endregion
 
-using MyMusics;
+using MyMusics.Classes;
 
 var music = new Music("One Reason", "Millet", 255, true);
-var music2 = new Music("I Really Want to Stay At Your House", "Rosa Walton", 246, false);
+var music2 = new Music("Walkin' In My Lane", "Milet", 241, false);
+var music3 = new Music("Love When I Cry", "Milet", 199, true);
 
-Console.WriteLine(music);
-Console.WriteLine(music2);
+var album = new Album("Walkin' In My Lane", new Gender("Pop"));
+album.AddMusic(music);
+album.AddMusic(music2);
+album.AddMusic(music3);
+
+Console.WriteLine(album);
