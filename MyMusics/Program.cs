@@ -178,7 +178,8 @@
 //
 // #endregion
 
-using MyMusics.Classes;
+using MyMusics.Classes.Bands;
+using MyMusics.Classes.Podcasts;
 
 var music = new Music("One Reason", new Band("Millet"), 255, true);
 var music2 = new Music("Walkin' In My Lane", new Band("Millet"), 241, false);
@@ -194,3 +195,35 @@ var band = new Band("Millet");
 band.AddAlbums(album);
 
 band.ShowDiscography();
+
+Console.WriteLine("\n-----------------------------------------\n");
+
+var episode1 = new Episodes(1, "Introdução à Inteligência Artificial", 3700);
+episode1.AddGuests("John Smith");
+episode1.AddGuests("Emily Johnson");
+
+var episode3 = new Episodes(3, "Segurança Cibernética e Proteção de Dados", 3000);
+episode3.AddGuests("David Ramirez");
+episode3.AddGuests("Lisa Chen");
+
+var episode5 = new Episodes(5, "Desenvolvimento de Aplicativos para Smartphones", 3000);
+episode5.AddGuests("Robert Johnson");
+episode5.AddGuests("Megan Wilson");
+episode5.AddGuests("Sarah Thompson");
+
+var episode2 = new Episodes(2, "O Futuro da Realidade Virtual", 3600);
+episode2.AddGuests("Michael Anderson");
+episode2.AddGuests("Sarah Thompson");
+
+var episode4 = new Episodes(4, "Tendências em Dispositivos Móveis", 3300);
+episode4.AddGuests("Mark Davis");
+episode4.AddGuests("Jessica Lee");
+
+var podcast = new Podcast("Tech Talk", "Lucas Silva");
+podcast.AddEpisodes(episode4);
+podcast.AddEpisodes(episode2);
+podcast.AddEpisodes(episode5);
+podcast.AddEpisodes(episode1);
+podcast.AddEpisodes(episode3);
+
+podcast.ShowDetails();

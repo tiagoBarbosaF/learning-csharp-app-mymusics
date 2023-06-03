@@ -1,4 +1,4 @@
-﻿namespace MyMusics.Classes;
+﻿namespace MyMusics.Classes.Bands;
 
 public class Band
 {
