@@ -2,10 +2,10 @@
 
 public class Album
 {
-    private string Name { get; set; }
+    public string Name { get; set; }
     private readonly List<Music> _musics = new();
     private Gender Gender { get; set; }
-    private int Duration => _musics.Sum(music => music.Duration);
+    public int Duration => _musics.Sum(music => music.Duration);
 
     public Album(string name, Gender gender)
     {

@@ -3,14 +3,14 @@
 public class Music
 {
     public string Name { get; }
-    private string Artist { get; }
+    private Band Artist { get; }
     public int Duration { get; }
     private bool Available { get; }
 
     private string ShortDescription => $"The Music {Name} is from artist {Artist}";
 
     
-    public Music(string name, string artist, int duration, bool available)
+    public Music(string name, Band artist, int duration, bool available)
     {
         Name = name;
         Artist = artist;
@@ -24,7 +24,7 @@ public class Music
 
         return $"\n- Music -\n" +
                $"Name: {Name}\n" +
-               $"Artist: {Artist}\n" +
+               $"Artist: {Artist.Name}\n" +
                $"Duration: {Duration}\n" +
                $"Available: {textAvailable}\n" +
                $"Short Description: {ShortDescription}";

@@ -180,13 +180,17 @@
 
 using MyMusics.Classes;
 
-var music = new Music("One Reason", "Millet", 255, true);
-var music2 = new Music("Walkin' In My Lane", "Milet", 241, false);
-var music3 = new Music("Love When I Cry", "Milet", 199, true);
+var music = new Music("One Reason", new Band("Millet"), 255, true);
+var music2 = new Music("Walkin' In My Lane", new Band("Millet"), 241, false);
+var music3 = new Music("Love When I Cry", new Band("Millet"), 199, true);
 
 var album = new Album("Walkin' In My Lane", new Gender("Pop"));
 album.AddMusic(music);
 album.AddMusic(music2);
 album.AddMusic(music3);
 
-Console.WriteLine(album);
+var band = new Band("Millet");
+
+band.AddAlbums(album);
+
+band.ShowDiscography();
