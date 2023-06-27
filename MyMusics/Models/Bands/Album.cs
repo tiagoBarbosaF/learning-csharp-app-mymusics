@@ -1,4 +1,4 @@
-﻿namespace MyMusics.Classes.Bands;
+﻿namespace MyMusics.Models.Bands;
 
 public class Album
 {

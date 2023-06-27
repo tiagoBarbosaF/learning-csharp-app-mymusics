@@ -1,4 +1,4 @@
-﻿namespace MyMusics.Classes.Podcasts;
+﻿namespace MyMusics.Models.Podcasts;
 
 public class Podcast
 {
