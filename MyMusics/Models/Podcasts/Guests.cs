@@ -1,6 +1,6 @@
 ﻿namespace MyMusics.Models.Podcasts;
 
-public class Guests
+internal class Guests
 {
     public string Name { get; set; }
 

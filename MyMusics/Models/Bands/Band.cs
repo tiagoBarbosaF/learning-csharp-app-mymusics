@@ -1,13 +1,14 @@
 ﻿namespace MyMusics.Models.Bands;
 
-public class Band
+internal class Band
 {
-    public string Name { get; set; }
+    public string Name { get; }
     private readonly List<Album> _albums = new();
-    private readonly List<int> _rate;
-    public double Average => _rate.Average();
+    private readonly List<Appraisal> _rate;
 
-    public Band(string name, List<int> rate)
+    public double Average => _rate.Count == 0 ? 0 : _rate.Average(appraisal => appraisal.Rate);
+
+    public Band(string name, List<Appraisal> rate)
     {
         Name = name;
         _rate = rate;
@@ -18,7 +19,7 @@ public class Band
         _albums.Add(album);
     }
 
-    public void AddRate(int rate)
+    public void AddRate(Appraisal rate)
     {
         _rate.Add(rate);
     }
@@ -28,7 +29,8 @@ public class Band
         var listAlbums = string.Join(Environment.NewLine,
             _albums.Select(album => $"- {album.Name} ({album.Duration / 60} min)"));
 
-        Console.WriteLine($"\n{Name} discography");
-        Console.WriteLine($"{listAlbums}");
+        Console.WriteLine($"\n{Name} discography\n" +
+                          $"{listAlbums}\n\n" +
+                          $"Total Albums: {_albums.Count}");
     }
 }

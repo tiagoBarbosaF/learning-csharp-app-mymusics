@@ -1,6 +1,6 @@
 ﻿namespace MyMusics.Models.Bands;
 
-public class Album
+internal class Album
 {
     public string Name { get; set; }
     private readonly List<Music> _musics = new();

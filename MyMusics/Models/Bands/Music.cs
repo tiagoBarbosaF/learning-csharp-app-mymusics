@@ -1,6 +1,6 @@
 ﻿namespace MyMusics.Models.Bands;
 
-public class Music
+internal class Music
 {
     public string Name { get; }
     private Band Artist { get; }

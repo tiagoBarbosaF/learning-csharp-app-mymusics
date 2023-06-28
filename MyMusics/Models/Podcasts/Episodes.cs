@@ -1,6 +1,6 @@
 ﻿namespace MyMusics.Models.Podcasts;
 
-public class Episodes
+internal class Episodes
 {
     public int Number { get; set; }
     public string Title { get; set; }

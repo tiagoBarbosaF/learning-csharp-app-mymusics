@@ -11,10 +11,10 @@ var chosenOption = "";
 
 var registerBands = new Dictionary<string, Band>
 {
-    { "Millet", new Band("Millet", new List<int> { 10, 8, 6 }) },
-    { "Beatles", new Band("Beatles", new List<int> { 5, 8, 10 }) },
-    { "Neo Japonism", new Band("Neo Japonism", new List<int> { 10, 7 }) },
-    { "Doul", new Band("Doul", new List<int> { 10, 9, 6, 7, 8 }) }
+    { "Millet", new Band("Millet", new List<Appraisal> { new(10), new(8), new(6) }) },
+    { "Beatles", new Band("Beatles", new List<Appraisal> { new(5), new(8), new(10) }) },
+    { "Neo Japonism", new Band("Neo Japonism", new List<Appraisal> { new(10), new(7) }) },
+    { "Doul", new Band("Doul", new List<Appraisal> { new(10), new(9), new(6), new(7), new(8) }) }
 };
 
 var band = registerBands["Millet"];
@@ -116,7 +116,7 @@ void RegisterBand()
 
     Console.WriteLine($"\nThe band {bandName} it's register successfully!");
 
-    var band = new Band(bandName, new List<int>());
+    var band = new Band(bandName, new List<Appraisal>());
 
     registerBands.Add(bandName, band);
 
@@ -137,7 +137,7 @@ void ListBands()
     foreach (var band in registerBands!)
     {
         Console.WriteLine($"- {band.Key}");
-        Console.WriteLine($"  Rate: {string.Join(", ", band.Value)}\n");
+        Console.WriteLine($"  Rate: {band.Value.Average:F}\n");
     }
 
     Console.ReadKey();
@@ -162,11 +162,11 @@ void AvailableBand()
 
         Console.Write($"Which rate for this band: ");
 
-        var rate = int.Parse(Console.ReadLine()!);
+        var rate = Appraisal.Parse(Console.ReadLine()!);
 
         band.AddRate(rate);
 
-        Console.WriteLine($"\nThe rate {rate} it's registered with successfully.");
+        Console.WriteLine($"\nThe rate {rate.Rate} it's registered with successfully.");
 
         Console.ReadKey();
     }
@@ -266,7 +266,7 @@ void ShowBandDetails()
         var band = registerBands[bandName];
 
         Console.Write($"\nBand Name: {bandName}\n" +
-                          $"Rate: {rateband}");
+                      $"Rate: {rateband:F}");
         band.ShowDiscography();
 
         Console.ReadKey();

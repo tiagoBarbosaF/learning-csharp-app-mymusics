@@ -1,6 +1,6 @@
 ﻿namespace MyMusics.Models.Bands;
 
-public class Gender
+internal class Gender
 {
     public string Name { get; }
 
