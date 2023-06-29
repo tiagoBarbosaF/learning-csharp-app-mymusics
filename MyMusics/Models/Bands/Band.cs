@@ -1,9 +1,11 @@
-﻿namespace MyMusics.Models.Bands;
+﻿using MyMusics.Models.Interfaces;
 
-internal class Band
+namespace MyMusics.Models.Bands;
+
+internal class Band : IRate
 {
     public string Name { get; }
-    private readonly List<Album> _albums = new();
+    public readonly List<Album> Albums = new();
     private readonly List<Appraisal> _rate;
 
     public double Average => _rate.Count == 0 ? 0 : _rate.Average(appraisal => appraisal.Rate);
@@ -14,23 +16,24 @@ internal class Band
         _rate = rate;
     }
 
-    public void AddAlbums(Album album)
-    {
-        _albums.Add(album);
-    }
+    public void AddAlbums(Album album) => Albums.Add(album);
 
-    public void AddRate(Appraisal rate)
-    {
-        _rate.Add(rate);
-    }
+    public void AddRate(Appraisal rate) => _rate.Add(rate);
 
     public void ShowDiscography()
     {
-        var listAlbums = string.Join(Environment.NewLine,
-            _albums.Select(album => $"- {album.Name} ({album.Duration / 60} min)"));
+        Console.WriteLine("\n\nDiscography:");
 
-        Console.WriteLine($"\n{Name} discography\n" +
-                          $"{listAlbums}\n\n" +
-                          $"Total Albums: {_albums.Count}");
+        foreach (var album in Albums)
+        {
+            Console.WriteLine("== Album ==");
+            Console.WriteLine($"  {album.Name} | Rate: {album.Average} | Duration: {album.Duration / 60} min");
+            Console.WriteLine("\n== Musics ==");
+            foreach (var music in album.Musics)
+                Console.WriteLine($"- {music.Name} | Rate: {music.Average} | Duration: {music.Duration / 60} min");
+            Console.WriteLine("----------------------------------------------");
+        }
+
+        Console.WriteLine($"\nTotal Albums: {Albums.Count}");
     }
 }

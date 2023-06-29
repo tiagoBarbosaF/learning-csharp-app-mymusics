@@ -24,8 +24,10 @@ internal abstract class Menu
         Console.WriteLine("- Enter 2 to list all bands");
         Console.WriteLine("- Enter 3 to available a band");
         Console.WriteLine("- Enter 4 to show an average of a band");
-        Console.WriteLine("- Enter 5 to register an album");
-        Console.WriteLine("- Enter 6 to show band details");
+        Console.WriteLine("- Enter 5 to show band details");
+        Console.WriteLine("- Enter 6 to register an album");
+        Console.WriteLine("- Enter 7 to available an album");
+        Console.WriteLine("- Enter 8 to available a music");
         Console.WriteLine("- Enter 0 to exit");
 
         Console.Write("\nEnter your option: ");
@@ -45,8 +47,10 @@ internal abstract class Menu
             {2, new MenuListBands()},
             {3, new MenuAvailableBand()},
             {4, new MenuAverageBandRate()},
-            {5, new MenuRegisterAlbum()},
-            {6, new MenuShowBandDetails()},
+            {5, new MenuShowBandDetails()},
+            {6, new MenuRegisterAlbum()},
+            {7, new MenuAvailableAlbum()},
+            {8, new MenuAvailableMusic()},
             {0, new MenuExit()}
         };
 

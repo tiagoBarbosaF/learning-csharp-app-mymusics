@@ -23,8 +23,8 @@ internal class MenuShowBandDetails : Menu
 
             var band = registerBands[bandName];
 
-            Console.Write($"\nBand Name: {bandName}\n" +
-                          $"Rate: {rateband:F}");
+            Console.Write($"\n== Band ==\n" +
+                          $" Name: {bandName} | Rate: {rateband:F}");
             band.ShowDiscography();
 
             Console.ReadKey();
